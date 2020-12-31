@@ -9,7 +9,7 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
                     <!--<inertia-link :href="`/posts/create`" method="get" as="button" type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Create New Post</inertia-link>-->
-                    <index-data-table :data="data"></index-data-table>
+                    <index-data-table :data="posts" :filters="filters"></index-data-table>
                     <!--
                                          <template slot-scope="column" slot="photo">
                         <img src="https://place-hold.it/65x65" />
@@ -110,8 +110,9 @@
             Welcome,
             IndexDataTable
         },
-        props: ['data', 'errors'],
+        props: ['posts', 'errors', 'filters'],
         data() {
+            console.log(this.posts)
             return {
                 editMode: false,
                 isOpen: false,
