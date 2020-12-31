@@ -16,6 +16,10 @@ class PostController extends Controller
      */
     public function index()
     {
+        // $data = Post::orderBy('title')
+        //     ->filter($request->only('search', 'trashed'))
+        //     ->paginate()
+        //     ->only('id', 'title', 'body', 'deleted_at')->all();
         $data = Post::all();
         return Inertia::render('Posts/Index', ['data' => $data]);
     }

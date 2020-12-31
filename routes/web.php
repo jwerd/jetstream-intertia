@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])
-    ->name('posts')
     ->resource('posts', \App\Http\Controllers\PostController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('foo/hello', 
