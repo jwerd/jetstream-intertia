@@ -8,6 +8,12 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
+                    <!--<inertia-link :href="`/posts/create`" method="get" as="button" type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Create New Post</inertia-link>-->
+                    <index-data-table :data="posts" :filters="filters"></index-data-table>
+                    <!--
+                                         <template slot-scope="column" slot="photo">
+                        <img src="https://place-hold.it/65x65" />
+                      </template>-->
                     <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md my-3" role="alert" v-if="$page.flash.message">
                       <div class="flex">
                         <div>
@@ -15,9 +21,9 @@
                         </div>
                       </div>
                     </div>
-                    <inertia-link :href="`/posts/create`" method="get" as="button" type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Create New Post</inertia-link>
 
                     <!--<button @click="openModal()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-3">Create New Post</button>-->
+                    <!--
                     <table class="table-fixed w-full">
                         <thead>
                             <tr class="bg-gray-100">
@@ -35,12 +41,12 @@
                                 <td class="border px-4 py-2">
                                     <inertia-link :href="`/posts/${row.id}/edit`" method="get" as="button" type="button" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</inertia-link>
 
-                                    <!--<button @click="edit(row)" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>-->
                                     <button @click="deleteRow(row)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
+                    -->
                     <div class="fixed z-10 inset-0 overflow-y-auto ease-out duration-400" v-if="isOpen">
                       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                         
@@ -96,12 +102,15 @@
 <script>
     import AppLayout from '@/Layouts/AppLayout'
     import Welcome from './../../Jetstream/Welcome'
+    import IndexDataTable from './IndexDataTable'
+
     export default {
         components: {
             AppLayout,
-            Welcome
+            Welcome,
+            IndexDataTable
         },
-        props: ['data', 'errors'],
+        props: ['posts', 'errors', 'filters'],
         data() {
             return {
                 editMode: false,

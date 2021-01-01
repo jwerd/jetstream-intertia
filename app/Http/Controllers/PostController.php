@@ -14,10 +14,16 @@ class PostController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data = Post::all();
-        return Inertia::render('Posts/Index', ['data' => $data]);
+        $data = Post::orderBy('title')
+            ->filter($request->only('search', 'trashed'))
+            ->paginate();
+        //$data = Post::all();
+        return Inertia::render('Posts/Index', [
+            'filters' => $request->all('search', 'trashed'),
+            'posts' => $data
+        ]);
     }
 
     /**
