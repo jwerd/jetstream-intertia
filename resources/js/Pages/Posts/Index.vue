@@ -112,7 +112,6 @@
         },
         props: ['posts', 'errors', 'filters'],
         data() {
-            console.log(this.posts)
             return {
                 editMode: false,
                 isOpen: false,

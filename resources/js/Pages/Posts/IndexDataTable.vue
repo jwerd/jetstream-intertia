@@ -68,8 +68,8 @@
         data() {
             return {
                 form: {
-                  search: '',
-                  trashed: ''
+                  search: this.filters.search,
+                  trashed: this.filters.search,
                 },
                 order: {
                   orderColumn: 'id',

@@ -3899,7 +3899,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: ['posts', 'errors', 'filters'],
   data: function data() {
-    console.log(this.posts);
     return {
       editMode: false,
       isOpen: false,
@@ -4039,8 +4038,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        search: '',
-        trashed: ''
+        search: this.filters.search,
+        trashed: this.filters.search
       },
       order: {
         orderColumn: 'id',
@@ -4984,6 +4983,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -58975,10 +58978,10 @@ var render = function() {
                 {
                   key: key,
                   staticClass:
-                    "mr-1 mb-1 px-4 py-3 text-sm border rounded hover:bg-white focus:border-indigo-500 focus:text-indigo-500",
+                    "mr-1 mb-1 px-4 py-3 text-sm border rounded hover:bg-indigo-700 hover:text-white focus:border-indigo-500 focus:text-indigo-500",
                   class: {
                     "bg-indigo-600 text-white": link.active,
-                    "ml-auto": link.label === "Next"
+                    "ml-autok": link.label === "Next"
                   },
                   attrs: { href: link.url },
                   domProps: { innerHTML: _vm._s(link.label) }
@@ -59014,77 +59017,23 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "flex items-center" }, [
-    _c(
-      "div",
-      { staticClass: "flex w-full bg-white shadow rounded" },
-      [
-        _c(
-          "dropdown",
-          {
-            staticClass:
-              "px-4 md:px-6 rounded-l border-r hover:bg-gray-100 focus:border-white focus:shadow-outline focus:z-10",
-            attrs: { "auto-close": false, placement: "bottom-start" }
-          },
-          [
-            _c("div", { staticClass: "flex items-baseline" }, [
-              _c("span", { staticClass: "text-gray-700 hidden md:inline" }, [
-                _vm._v("Filter")
-              ]),
-              _vm._v(" "),
-              _c(
-                "svg",
-                {
-                  staticClass: "w-2 h-2 fill-gray-700 md:ml-2",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    viewBox: "0 0 961.243 599.998"
-                  }
-                },
-                [
-                  _c("path", {
-                    attrs: {
-                      d:
-                        "M239.998 239.999L0 0h961.243L721.246 240c-131.999 132-240.28 240-240.624 239.999-.345-.001-108.625-108.001-240.624-240z"
-                    }
-                  })
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "mt-2 px-4 py-6 w-screen shadow-xl bg-white rounded",
-                style: { maxWidth: _vm.maxWidth + "px" },
-                attrs: { slot: "dropdown" },
-                slot: "dropdown"
-              },
-              [_vm._t("default")],
-              2
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          staticClass:
-            "relative w-full px-6 py-3 rounded-r focus:shadow-outline",
-          attrs: {
-            autocomplete: "off",
-            type: "text",
-            name: "search",
-            placeholder: "Search…"
-          },
-          domProps: { value: _vm.value },
-          on: {
-            input: function($event) {
-              return _vm.$emit("input", $event.target.value)
-            }
+    _c("div", { staticClass: "flex w-full bg-white shadow rounded" }, [
+      _c("input", {
+        staticClass: "relative w-full px-6 py-3 rounded-r focus:shadow-outline",
+        attrs: {
+          autocomplete: "off",
+          type: "text",
+          name: "search",
+          placeholder: "Search…"
+        },
+        domProps: { value: _vm.value },
+        on: {
+          input: function($event) {
+            return _vm.$emit("input", $event.target.value)
           }
-        })
-      ],
-      1
-    ),
+        }
+      })
+    ]),
     _vm._v(" "),
     _c(
       "button",
